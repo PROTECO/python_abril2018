@@ -12,6 +12,7 @@ print(y[2])
 
 f = open('diccionario.txt')
 D = eval(f.read())
+f.close()
 #Podemos guardar un diccionario en un archivo y recuperarlo
 #en otro script con eval
 
