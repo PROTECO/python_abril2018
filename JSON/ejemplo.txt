@@ -1,0 +1,14 @@
+{
+    "nombres": {
+        "apellidos": [
+            "Garrido",
+            "Mendoza"
+        ],
+        "nombre": "Luis Alberto"
+    },
+    "trabajo": [
+        "estudiante",
+        "python"
+    ],
+    "edad": 20
+}

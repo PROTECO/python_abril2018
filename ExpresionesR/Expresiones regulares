@@ -1,0 +1,110 @@
+Expresiones regulares
+
+Lenguaje creado para facilitar el análisis de texto
+
+Es útil para:
+	- Verificar que un String concuerde con un patrón
+	- Realizar substituciones en strings
+	- Obtener pedazos importantes de un texto
+
+	Necesitamos importar el módulo re
+
+	'import re'
+
+METACARACTERES
+
+Son caracteres que toman valor dependiendo del contexto
+
+. -> se puede reemplazar por otro caracter
+	a. -> av, ae, a3, a@, a2
+
+| -> puede ser cualquiera de las dos opciones
+	a|b -> a,b
+
+^ -> hace match con el principio del texto
+	^hola -> hola como estás?
+
+$ -> hace match con el final del texto
+	estas?$ -> hola como estas?
+
+
+CUANTIFICADORES
+Definen la repetición de uno o más caracteres
+
+* -> Se puede repetir 0 o más veces
+	b* -> b, bb, bbbbb, '', bbbbbb
+
++ -> Se puede repetir 1 o más veces
+	3+ -> 3, 333, 333333
+
+? -> Se puede repetir 0 o 1 vez
+	d? -> d, ''
+
+{n} -> Se puede repetir n veces
+	a{3} -> aaaa
+
+{n,m} -> Se puede repetir de n a m veces
+	w{2,5} -> ww, www, wwww, wwwww
+	w{,4} -> '', w, www, wwww
+	w{2,} -> ww, wwwwwww, wwwwwwwwwwwwww
+
+
+RANGO
+
+[] -> Especifica un rango de valores
+	[12a] -> 1, 2, a
+	[@2 3c] -> @, 2, " ", 3, c
+	[a-z] -> a, b, c, ...., z
+	[A-Z] -> A, B, C, ...., Z
+	[0-9] -> 0, 1, 2, ...., 10
+	[A-Za-z] -> A, a, B, b, ..., Z, z
+	[A-Za-z0-9] -> todas las letras y números
+	[A-Za-z0-9._] -> todos los caracteres válidos en un correo electrónico
+
+^ -> Sirve para negar un rango
+	[^a-z] -> 2, A, @, 8, c, ....
+	[^A-Za-z] -> 3, 6, @, 1, ....
+
+
+ALIAS
+
+Son formas resumidas de declarar rangos de caracteres
+	(digitos)
+	\d -> equivale a [0-9]
+
+	(no digitos)
+	\D -> equivale a [^0-9]
+
+	(nombres o palabras)
+	\w -> equivale a [a-zA-Z0-9_]
+
+	(no nombres ni palabras)
+	\W -> equivale a [^a-zA-Z0-9_]
+
+	(salto de linea o tabulación)
+	\s -> equivale a [\n\t]
+
+	(no salto de linea ni tabulación)
+	\S -> equivale a [^\n\t]
+
+
+METODOS
+	re.match(patron, texto)
+	- Se utiliza para ver si hay match al principio del texto
+
+	re.search(patron, texto)
+	- Se utiliza para ver si hay match en cualquier parte del texto
+
+	re.findall(patron, texto)
+	- Regresa una lista de todas las subcadenas que hayan hecho match
+
+	re.sub(patron, reemplazo, texto)
+	- Regresa el texto con el reemplazo en vez del patrón
+
+	re.sub(patron, reemplazo, texto, máximo)
+	- Regresa el texto con el reemplazo hecho una cantidad de veces, indicada en máximo
+
+	re.compile(patron)
+	- Compila un patron en un objeto de tipo expresion regular
+
+	
